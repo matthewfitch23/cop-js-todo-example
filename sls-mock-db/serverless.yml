@@ -1,0 +1,38 @@
+service: serverless-crud
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: us-east-1
+  stage: dev
+
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          path: todo
+          method: post
+          cors: true
+  readAll:
+    handler: handler.getAll
+    events:
+      - http:
+          path: todo
+          method: get
+          cors: true
+  readOne:
+    handler: handler.get
+    events:
+      - http:
+          path: todo/{id}
+          method: get
+          cors: true
+  update:
+    handler: handler.update
+    events:
+      - http:
+          path: todo/{id}
+          method: put
+          cors: true
+
