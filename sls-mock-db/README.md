@@ -1,15 +1,16 @@
-# Serverless CRUD
+# Express mock db
 
-Serverless service which provides a basic CRUD scaffold.
+This is a very basic example CRUD project using Node.js in AWS Lambda, with a few endpoints to interact with todo items.
 
-## Installation
+The database is mocked, so the data is static and cannot be mutated.
 
-Make sure that you use Serverless v1.
+The project is based off the AWS example CRUD scaffold.
 
-1. Run `serverless install --url https://github.com/pmuens/serverless-crud` to install the service in your current working directory
-2. Next up cd into the service with `cd serverless-crud`
-3. Run `npm install`
-4. Deploy with `serverless deploy`
+## Deployment
+To deploy the lambda functions to AWS, simply execute the following command:
+```bash
+serverless deploy
+```
 
 ## How to use
 
@@ -18,33 +19,28 @@ Simply perform requests against the exposed endpoints:
 ### Create
 
 ```bash
-curl -X POST https://XXXX.execute-api.region.amazonaws.com/dev/todos --data '{ "body" : "Learn Serverless" }'
+curl -X POST https://XXXX.execute-api.region.amazonaws.com/dev/todo --data '{ "body" : "Learn Serverless" }'
 ```
 
-### Read all
+### Get all
 
 
 ```bash
-curl https://XXXX.execute-api.region.amazonaws.com/dev/todos
+curl https://XXXX.execute-api.region.amazonaws.com/dev/todo
 ```
 
-### Read one
+### Get one
 
 ```bash
-curl https://XXXX.execute-api.region.amazonaws.com/dev/todos/<id>
+curl https://XXXX.execute-api.region.amazonaws.com/dev/todo/<id>
 ```
 
 ### Update
 
 ```bash
-curl -X PUT https://XXXX.execute-api.region.amazonaws.com/dev/todos/<id> --data '{ "body" : "Understand Serverless" }'
+curl -X PUT https://XXXX.execute-api.region.amazonaws.com/dev/todo/<id> --data '{ "body" : "Understand Serverless" }'
 ```
 
-### DELETE
-
-```bash
-curl -X DELETE https://XXXX.execute-api.region.amazonaws.com/dev/todos/<id>
-```
 
 ## AWS services used
 
