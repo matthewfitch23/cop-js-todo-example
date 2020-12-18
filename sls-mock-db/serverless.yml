@@ -1,35 +1,35 @@
-service: serverless-crud
+service: sls-mock-db
 
 provider:
   name: aws
-  runtime: nodejs4.3
-  region: us-east-1
+  runtime: nodejs12.x
+  region: eu-west-1
   stage: dev
 
 functions:
-  create:
-    handler: handler.create
-    events:
-      - http:
-          path: todo
-          method: post
-          cors: true
-  readAll:
-    handler: handler.getAll
+  getAll:
+    handler: src/index.getAll
     events:
       - http:
           path: todo
           method: get
           cors: true
-  readOne:
-    handler: handler.get
+  get:
+    handler: src/index.get
     events:
       - http:
           path: todo/{id}
           method: get
           cors: true
+  create:
+    handler: src/index.create
+    events:
+      - http:
+          path: todo
+          method: post
+          cors: true
   update:
-    handler: handler.update
+    handler: src/index.update
     events:
       - http:
           path: todo/{id}

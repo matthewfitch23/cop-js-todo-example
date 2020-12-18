@@ -31,7 +31,7 @@ const get = async (event, context) => {
   context.succeed(response);
 };
 
-const create = (event, context) => {
+const create = async (event, context) => {
   const todo = JSON.parse(event.body);
   const result = await db.createTodo(todo);
 
@@ -46,7 +46,7 @@ const create = (event, context) => {
   context.succeed(response);
 };
 
-const update = (event, context) => {
+const update = async (event, context) => {
   const { id } = event.pathParameters;
   const todo = JSON.parse(event.body);
   const result = await db.createTodo(id, todo);
